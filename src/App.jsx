@@ -355,7 +355,7 @@ function App() {
               <div className="flex items-center justify-center space-x-3 space-x-reverse mb-6">
                 <AnimatedIcon icon={Trophy} className="h-10 w-10 text-yellow-300" />
                 <CardTitle className="text-3xl md:text-4xl font-cairo font-black text-glow">
-                  🎉 مبروك! أنت من أوائل السادس المهني في العراق 🎉
+                  🎉 مبروك! أنت من الاوئل على العراق🎉
                 </CardTitle>
                 <AnimatedIcon icon={Trophy} className="h-10 w-10 text-yellow-300" />
               </div>
