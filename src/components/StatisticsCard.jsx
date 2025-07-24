@@ -11,18 +11,18 @@ const StatisticsCard = ({ currentStudent }) => {
   useEffect(() => {
     // حساب الإحصائيات
     const totalStudents = studentsData.length
-    const averageGrade = studentsData.reduce((sum, student) => sum + student['المعدل'], 0) / totalStudents
-    const highestGrade = Math.max(...studentsData.map(s => s['المعدل']))
-    const lowestGrade = Math.min(...studentsData.map(s => s['المعدل']))
+    const averageGrade = studentsData.reduce((sum, student) => sum + student["المعدل"], 0) / totalStudents
+    const highestGrade = Math.max(...studentsData.map(s => s["المعدل"]))
+    const lowestGrade = Math.min(...studentsData.map(s => s["المعدل"]))
     
     // تصنيف الطلاب حسب المعدل
-    const excellentCount = studentsData.filter(s => s['المعدل'] >= 90).length
-    const veryGoodCount = studentsData.filter(s => s['المعدل'] >= 80 && s['المعدل'] < 90).length
-    const goodCount = studentsData.filter(s => s['المعدل'] >= 70 && s['المعدل'] < 80).length
+    const excellentCount = studentsData.filter(s => s["المعدل"] >= 90).length
+    const veryGoodCount = studentsData.filter(s => s["المعدل"] >= 80 && s["المعدل"] < 90).length
+    const goodCount = studentsData.filter(s => s["المعدل"] >= 70 && s["المعدل"] < 80).length
     
     // إحصائيات الأقسام
     const departmentStats = studentsData.reduce((acc, student) => {
-      const dept = student['القسم']
+      const dept = student["القسم"]
       acc[dept] = (acc[dept] || 0) + 1
       return acc
     }, {})
@@ -37,15 +37,15 @@ const StatisticsCard = ({ currentStudent }) => {
       excellentCount,
       veryGoodCount,
       goodCount,
-      topDepartment: topDepartment ? topDepartment[0] : 'غير محدد',
+      topDepartment: topDepartment ? topDepartment[0] : "غير محدد",
       topDepartmentCount: topDepartment ? topDepartment[1] : 0,
-      currentRank: currentStudent ? currentStudent['التسلسل'] : null,
-      currentGrade: currentStudent ? currentStudent['المعدل'] : null
+      currentRank: currentStudent ? currentStudent["التسلسل"] : null,
+      currentGrade: currentStudent ? currentStudent["المعدل"] : null
     })
 
     // تأثير الظهور التدريجي
     setTimeout(() => setIsVisible(true), 500)
-  }, [currentStudent])
+  }, [currentStudent, studentsData]) // أضف studentsData كاعتماد
 
   const getGradeCategory = (grade) => {
     if (grade >= 90) return { text: 'ممتاز', color: 'bg-green-500', emoji: '🌟' }

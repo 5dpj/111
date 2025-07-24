@@ -132,8 +132,19 @@ function App() {
     const elements = document.querySelectorAll('.scroll-reveal')
     elements.forEach(el => observer.observe(el))
 
+    const savedDarkMode = localStorage.getItem("darkMode")
+    if (savedDarkMode) {
+      setDarkMode(JSON.parse(savedDarkMode))
+      document.documentElement.classList.toggle("dark", JSON.parse(savedDarkMode))
+    }
+
     return () => observer.disconnect()
-  }, [student])
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem("darkMode", JSON.stringify(darkMode))
+    document.documentElement.classList.toggle("dark", darkMode)
+  }, [darkMode])
 
   // محاكاة التحقق من الاشتراك في تيليجرام مع تحسينات
   const verifyTelegramSubscription = async (examNum) => {
@@ -223,6 +234,19 @@ function App() {
     <div className="min-h-screen animated-background flex flex-col items-center justify-center p-4 relative">
       <AnimatedParticles />
       {showCelebration && <EnhancedCelebrationEffects />}
+
+      {/* زر تبديل الوضع المظلم/الفاتح */}
+      <Button
+        onClick={() => setDarkMode(!darkMode)}
+        className="fixed top-4 left-4 z-50 bg-white/20 backdrop-blur-md text-white rounded-full p-2 shadow-lg hover:bg-white/30 transition-all duration-300"
+        aria-label="Toggle dark mode"
+      >
+        {darkMode ? (
+          <Sun className="h-6 w-6 text-yellow-300" />
+        ) : (
+          <Moon className="h-6 w-6 text-indigo-300" />
+        )}
+      </Button>
       
       <div className="w-full max-w-4xl space-y-8 relative z-10">
         {/* العنوان الرئيسي المحسن */}
@@ -331,7 +355,7 @@ function App() {
               <div className="flex items-center justify-center space-x-3 space-x-reverse mb-6">
                 <AnimatedIcon icon={Trophy} className="h-10 w-10 text-yellow-300" />
                 <CardTitle className="text-3xl md:text-4xl font-cairo font-black text-glow">
-                  🎉 مبروك! أنت من الاوئل على العراق🎉
+                  🎉 مبروك! أنت من أوائل السادس المهني في العراق 🎉
                 </CardTitle>
                 <AnimatedIcon icon={Trophy} className="h-10 w-10 text-yellow-300" />
               </div>

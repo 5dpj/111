@@ -184,7 +184,7 @@ const PrintButton = ({ student }) => {
           </div>
           
           <div class="congratulations">
-            🎉 مبروك! أنت من الاوئل على العراق🎉
+            🎉 مبروك! أنت من أوائل السادس المهني في العراق 🎉
           </div>
           
           <div class="student-info">
@@ -246,7 +246,7 @@ const PrintButton = ({ student }) => {
           </div>
           
           <div style="text-align: center; font-size: 1.8rem; font-weight: 700; color: #f093fb; margin: 30px 0; padding: 20px; background: linear-gradient(135deg, #f093fb10, #667eea10); border-radius: 15px;">
-            🎉 مبروك! أنت من الاوئل على العراق🎉
+            🎉 مبروك! أنت من أوائل السادس المهني في العراق 🎉
           </div>
           
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 40px 0;">
